@@ -23,6 +23,15 @@ set(CMAKE_CXX_EXTENSIONS        OFF)
 set(LIBRARY_NAME Library)
 set(EXECUTABLE_NAME Executable)
 
+# This variable is from CMake. We populated with paths to cmake modules files.
+# CMake now know where to search for our CMake modules. With the include function we tell
+# CMake wich file to call and include into this main file.
+# After the cmake file is inclded we can call the functions there declared like add_git_submodule.
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/)
+include(AddGitSubModule)
+
+add_git_submodule(dependencies/json)
+
 # This is a boolena variable. It can be acceced through the commandline at the moment of 
 # preparing the project (step 3) by typing as an argument -D<VariableName>=<Value>
 option(COMPILE_EXECUTABLE "Whether to compile the executable" ON)
