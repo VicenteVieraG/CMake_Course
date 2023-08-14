@@ -31,6 +31,7 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/)
 include(AddGitSubModule)
 
 add_git_submodule(dependencies/json)
+add_git_submodule(dependencies/JUCE)
 
 # This is a boolena variable. It can be acceced through the commandline at the moment of 
 # preparing the project (step 3) by typing as an argument -D<VariableName>=<Value>

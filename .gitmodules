@@ -1,3 +1,9 @@
 [submodule "dependencies/json"]
 	path = dependencies/json
 	url = https://github.com/nlohmann/json
+[submodule "dependencies/juice"]
+	path = dependencies/juice
+	url = https://github.com/juce-framework/JUCE.git
+[submodule "dependencies/JUCE"]
+	path = dependencies/JUCE
+	url = https://github.com/juce-framework/JUCE.git
