@@ -39,6 +39,7 @@ option(COMPILE_EXECUTABLE "Whether to compile the executable" ON)
 # We tell CMake where to find the files needed to compile.
 # src folder needs to be declared first because is a dependency of app.
 add_subdirectory(config)
+add_subdirectory(dependencies)
 add_subdirectory(src)
 add_subdirectory(include)
 if(COMPILE_EXECUTABLE)

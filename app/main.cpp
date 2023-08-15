@@ -1,6 +1,6 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
-#include "my_lib.h"
+#include <my_lib.h>
 #include "config.hpp"
 
 int main(int argc, char** argv){
