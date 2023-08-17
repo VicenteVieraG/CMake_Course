@@ -30,8 +30,58 @@ set(EXECUTABLE_NAME Executable)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/)
 include(AddGitSubModule)
 
-add_git_submodule(dependencies/json)
-add_git_submodule(dependencies/JUCE)
+# This includes a function to get the files from the repos directly.
+# It clones the selected repo at build/_deps. It only works with CMake projects.
+include(FetchContent)
+
+# This function gets the library cloned and configured into the project.
+# It needs:
+# -The name of the library, wich can be found at the source CMakeLists file of the project
+# as the project name.
+# -The link to the repo.
+# -The release tag version of the project.
+# -GIT_SHALLOW sirve para que no se clonen los submodulos de los repos seleccionados.
+
+# FetchContent_MakeAvailable includes the selected library from the FetchContent_Declare().
+FetchContent_Declare(
+    nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json
+    GIT_TAG v3.11.2
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(nlohmann_json)
+
+FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY https://github.com/fmtlib/fmt
+    GIT_TAG 10.1.0
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(fmt)
+
+FetchContent_Declare(
+    spdlog
+    GIT_REPOSITORY https://github.com/gabime/spdlog
+    GIT_TAG  v1.12.0
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(spdlog)
+
+FetchContent_Declare(
+    cxxopts
+    GIT_REPOSITORY https://github.com/jarro2783/cxxopts
+    GIT_TAG v3.1.1
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(cxxopts)
+
+FetchContent_Declare(
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2
+    GIT_TAG v3.4.0
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(Catch2)
 
 # This is a boolena variable. It can be acceced through the commandline at the moment of 
 # preparing the project (step 3) by typing as an argument -D<VariableName>=<Value>
